@@ -6,7 +6,7 @@ const router = express.Router();
 //definimos las rutas para la gestion de agente
 router.post('/', productoCtrl.createProducto);
 router.get('/', productoCtrl.getProductosDestacados);
-router.get('/', productoCtrl.getProductos);
+//router.get('/', productoCtrl.getProductos);
 // router.delete('/:id', productoCtrl.deleteProducto);
 router.put('/:id', productoCtrl.editProducto);
 router.get('/:id', productoCtrl.getProducto);

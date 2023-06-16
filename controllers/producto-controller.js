@@ -1,10 +1,10 @@
 const Producto = require('../models/producto');
 const productoCtrl = {}
 
-productoCtrl.getProductos = async (req ,res) => {
-    var productos = await Producto.find();
-    res.json(productos);
-}
+// productoCtrl.getProductos = async (req ,res) => {
+//     var productos = await Producto.find();
+//     res.json(productos);
+// }
 productoCtrl.getProductosDestacados = async (req, res) => {
     var productos = await Producto.find({ destacado: true });
     res.json(productos);

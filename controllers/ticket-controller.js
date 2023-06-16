@@ -18,9 +18,32 @@ ticketCtrl.createTicket = async (req, res) => {
     }
   };
   
-  ticketCtrl.getTickets = async (req, res) => {
+  ticketCtrl.getTicket = async (req, res) => {
     try {
-      const tickets = await Ticket.find().populate('espectador');
+      const tickets = await Ticket.findById(req.params.id).populate('espectador');
+      res.json(tickets);
+    } catch (error) {
+      res.status(500).json({
+        status: '0',
+        msg: 'Error al obtener ticket.'
+      });
+    }
+  };
+
+  // ticketCtrl.getTicket = async (req, res) => {
+  //   const ticket = await Ticket.findById(req.params.id);
+  //   res.json(ticket);
+  // };
+
+  ticketCtrl.getTicketsFiltro = async (req, res) => {
+    try {
+    
+      let parametros = {}
+  
+      if (req.query.categoriaEspectador != '0' && req.query.categoriaEspectador != 'undefined') {
+        parametros.categoriaEspectador = req.query.categoriaEspectador;
+      }
+      var tickets = await Ticket.find(parametros).populate("espectador");
       res.json(tickets);
     } catch (error) {
       res.status(500).json({
